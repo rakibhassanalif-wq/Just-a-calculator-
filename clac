@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>991 Calculator</title>
+<style>
+    body {
+        background: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial;
+    }
+    .calc {
+        background: #222;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    #display {
+        width: 100%;
+        height: 60px;
+        font-size: 22px;
+        margin-bottom: 10px;
+        text-align: right;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+    }
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(5, 60px);
+        gap: 10px;
+    }
+    button {
+        height: 50px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #555;
+        color: white;
+    }
+</style>
+</head>
+<body>
+
+<div class="calc">
+    <input id="display" readonly>
+
+    <div class="buttons">
+        <button onclick="add('7')">7</button>
+        <button onclick="add('8')">8</button>
+        <button onclick="add('9')">9</button>
+        <button onclick="add('/')">÷</button>
+        <button onclick="clearDisplay()">C</button>
+
+        <button onclick="add('4')">4</button>
+        <button onclick="add('5')">5</button>
+        <button onclick="add('6')">6</button>
+        <button onclick="add('*')">×</button>
+        <button onclick="del()">DEL</button>
+
+        <button onclick="add('1')">1</button>
+        <button onclick="add('2')">2</button>
+        <button onclick="add('3')">3</button>
+        <button onclick="add('-')">−</button>
+        <button onclick="add('(')">(</button>
+
+        <button onclick="add('0')">0</button>
+        <button onclick="add('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="add('+')">+</button>
+        <button onclick="add(')')">)</button>
+
+        <button onclick="add('Math.sin(')">sin</button>
+        <button onclick="add('Math.cos(')">cos</button>
+        <button onclick="add('Math.tan(')">tan</button>
+        <button onclick="add('Math.log10(')">log</button>
+        <button onclick="add('Math.sqrt(')">√</button>
+
+        <button onclick="add('Math.PI')">π</button>
+        <button onclick="add('Math.E')">e</button>
+        <button onclick="add('**2')">x²</button>
+        <button onclick="add('**')">^</button>
+        <button onclick="add('1/')">1/x</button>
+    </div>
+</div>
+
+<script>
+let display = document.getElementById("display");
+
+function add(val) {
+    display.value += val;
+}
+
+function clearDisplay() {
+    display.value = "";
+}
+
+function del() {
+    display.value = display.value.slice(0, -1);
+}
+
+function calculate() {
+    try {
+        display.value = eval(display.value);
+    } catch {
+        display.value = "Error";
+    }
+}
+</script>
+
+</body>
+</html>
